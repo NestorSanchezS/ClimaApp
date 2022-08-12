@@ -1,16 +1,30 @@
 import React from "react";
+import { useWeather } from "../hooks/useWeather";
 
 export const Formulary = () => {
+  const { dataForm, handleChangeData } = useWeather();
   return (
     <div className="contenedor">
       <form>
         <div className="campo">
           <label htmlFor="city">City</label>
-          <input type="text" id="city" name="city" />
+          <input
+            type="text"
+            id="city"
+            name="city"
+            value={dataForm.city}
+            onChange={({ target }) => handleChangeData({ target })}
+          />
         </div>
         <div className="campo">
           <label htmlFor="country">Country</label>
-          <select type="text" id="country" name="country">
+          <select
+            type="text"
+            id="country"
+            name="country"
+            value={dataForm.country}
+            onChange={({ target }) => handleChangeData({ target })}
+          >
             <option value="">--Select a country--</option>
             <option value="US">United State</option>
             <option value="MX">Mexico</option>
