@@ -4,6 +4,7 @@ import { createContext } from "react";
 
 export const WeatherContext = createContext();
 export const WeatherProvider = ({ children }) => {
+  const [error, setError] = useState(false);
   const [dataForm, setDataForm] = useState({
     city: "",
     country: "",
@@ -17,7 +18,9 @@ export const WeatherProvider = ({ children }) => {
   };
 
   return (
-    <WeatherContext.Provider value={{ dataForm, handleChangeData }}>
+    <WeatherContext.Provider
+      value={{ dataForm, handleChangeData, error, setError }}
+    >
       {children}
     </WeatherContext.Provider>
   );

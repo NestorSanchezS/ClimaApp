@@ -1,11 +1,21 @@
 import React from "react";
 import { useWeather } from "../hooks/useWeather";
+import { Error } from "./Error";
 
 export const Formulary = () => {
-  const { dataForm, handleChangeData } = useWeather();
+  const { dataForm, handleChangeData, setError, error } = useWeather();
+  const handleSubmitData = (e) => {
+    e.preventDefault();
+    if (Object.values(dataForm).includes("")) {
+      setError(true);
+      return;
+    }
+    setError(false);
+  };
   return (
     <div className="contenedor">
-      <form>
+      <form onSubmit={handleSubmitData}>
+        {error && <Error>Todos los campos son obligatorios</Error>}
         <div className="campo">
           <label htmlFor="city">City</label>
           <input
