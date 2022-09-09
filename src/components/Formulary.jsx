@@ -3,7 +3,8 @@ import { useWeather } from "../hooks/useWeather";
 import { Error } from "./Error";
 
 export const Formulary = () => {
-  const { dataForm, handleChangeData, setError, error } = useWeather();
+  const { dataForm, handleChangeData, setError, error, consultWeather } =
+    useWeather();
   const handleSubmitData = (e) => {
     e.preventDefault();
     if (Object.values(dataForm).includes("")) {
@@ -11,7 +12,9 @@ export const Formulary = () => {
       return;
     }
     setError(false);
+    consultWeather(dataForm);
   };
+
   return (
     <div className="contenedor">
       <form onSubmit={handleSubmitData}>

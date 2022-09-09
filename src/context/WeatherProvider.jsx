@@ -17,9 +17,13 @@ export const WeatherProvider = ({ children }) => {
     });
   };
 
+  const consultWeather = (data) => {
+    console.log(data);
+  };
+
   return (
     <WeatherContext.Provider
-      value={{ dataForm, handleChangeData, error, setError }}
+      value={{ dataForm, handleChangeData, error, setError, consultWeather }}
     >
       {children}
     </WeatherContext.Provider>
